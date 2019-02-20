@@ -1,4 +1,5 @@
 <?php
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +15,24 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('products', 'ProductController');
+Route::resource('categories', 'CategoryController');
+
+Route::get('/products2order', function () {
+    $products=Product::all();
+    return view('products.users.listview' )->withDetails($products);
+});
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+

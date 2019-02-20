@@ -80,11 +80,36 @@
             @endif
 
             <div class="content">
+                {{-- Place for  logo --}}
+                <image img src="/img/toko4you.png" alt="Logo"></image>
+
+
+
                 <div class="title m-b-md">
                     Toko4you
                 </div>
 
+
+
                 <div class="links">
+                    {{-- Keep this for testing what you have build --}}
+
+                    <p> T e s t - D a s h b o a r d </p>
+                    <p> Admin </p>
+                    <a href="/products">Products</a>
+                    <a href="/categories">Categories</a>
+                    <br>
+                    <br>
+                    <p> User </p>
+                    <a href="/products2order">Products to order</a>
+                    <br>
+                    <br>
+
+
+
+
+
+
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
