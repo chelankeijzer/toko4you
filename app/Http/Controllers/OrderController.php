@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Order;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-       //
        //--------------------------------------------------------------------
-       $products = Product::all();
-       return view('products.index', compact('products'));
+       $orders = Order::all();
+       return view('orders.index', compact('orders'));
        //--------------------------------------------------------------------
 
     }
@@ -29,8 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        //
         //--------------------------------------------------------------------
-        return view('products.create');
+        return view('orders.create');
         //--------------------------------------------------------------------
 
     }
@@ -46,33 +46,26 @@ class ProductController extends Controller
         //
         //----------------------------------------------------------------
         $request->validate([
-            'productName'=>'required',
-            'productPrice'=> 'required'
+            'userId'=>'required',
              ]);
 
-          $share = new Product([
-            'productName' => $request->get('productName'),
-            'productCategory' => $request->get('productCategory'),
-            'productDescription' => $request->get('productDescription'),
-            'productPrice' => $request->get('productPrice'),
-            'productImage' => $request->get('productImage')
+          $share = new Order([
+            'userId' => $request->get('userId')
 
           ]);
           $share->save();
-          return redirect('/products')->with('success', 'Product has been added');
+          return redirect('/orders')->with('success', 'Order has been added');
         //----------------------------------------------------------------
-
-
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Order $order)
     {
         //
     }
@@ -80,17 +73,19 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
         //--------------------------------------------------------------------
-        $product = Product::find($id);
+        $order = Order::find($id);
 
-        return view('products.edit', compact('product'));
+        return view('orders.edit', compact('order'));
         //--------------------------------------------------------------------
+
+
 
     }
 
@@ -98,33 +93,26 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-
-
-//    public function update(Request $request, Product $product)
+//    public function update(Request $request, Order $order)
     public function update(Request $request, $id)
 
     {
+        //
     //------------------------------------------------------------------------------------------------
     $request->validate([
-        //'productName'=>'required',
-        'productPrice'=> 'required'
+        'userId'=> 'required'
               ]);
 
-        $product = Product::find($id);
-        $product->productName = $request->get('productName');
-        $product->productCategory = $request->get('productCategory');
-        $product->productDescription = $request->get('productDescription');
-        $product->productPrice = $request->get('productPrice');
-        $product->productImage = $request->get('productImage');
+        $order = Order::find($id);
+        $order->userId = $request->get('userId');
 
-        $product->save();
+        $order->save();
 
-        return redirect('/products')->with('success', 'Product has been updated');
+        return redirect('/orders')->with('success', 'Order has been updated');
      //------------------------------------------------------------------------------------------------
-
 
 
 
@@ -133,17 +121,20 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+
     {
         //
         //------------------------------------------------------------------------------------------------
-        $product = Product::find($id);
-        $product->delete();
-        return redirect('/products')->with('success', 'Product has been deleted Successfully');
+        $order = Order::find($id);
+        $order->delete();
+        return redirect('/orders')->with('success', 'Order has been deleted Successfully');
         //------------------------------------------------------------------------------------------------
+
+
 
 
 

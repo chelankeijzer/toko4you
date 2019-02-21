@@ -18,6 +18,9 @@ Route::get('/', function () {
 
 Route::resource('products', 'ProductController');
 Route::resource('categories', 'CategoryController');
+Route::resource('orders', 'OrderController');
+Route::resource('orderlines', 'OrderlinesController');
+
 
 Route::get('/products2order', function () {
     $products=Product::all();

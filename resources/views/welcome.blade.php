@@ -98,6 +98,7 @@
                     <p> Admin </p>
                     <a href="/products">Products</a>
                     <a href="/categories">Categories</a>
+                    <a href="/orders">Orders</a>
                     <br>
                     <br>
                     <p> User </p>
